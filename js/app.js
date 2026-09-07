@@ -97,7 +97,7 @@
   const optionsEl  = $('options');
   const questionEl = $('question-text');
   const stepEl     = $('quiz-step');
-  const progressEl = $('progress');
+  const fillEl     = $('progress-fill');
   const backBtn    = $('btn-back');
 
   // blocks the double-tap that would otherwise skip a question
@@ -119,15 +119,9 @@
     const q = QUESTIONS[current];
 
     questionEl.innerHTML = q.text;
-    stepEl.textContent = 'Q' + (current + 1) + ' / ' + QUESTIONS.length;
-    progressEl.setAttribute('aria-valuenow', String(current + 1));
-
-    progressEl.innerHTML = '';
-    for (var i = 0; i < QUESTIONS.length; i++) {
-      const block = document.createElement('span');
-      block.className = 'progress__block' + (i <= current ? ' is-on' : '');
-      progressEl.appendChild(block);
-    }
+    stepEl.textContent = 'Question ' + (current + 1) + ' of ' + QUESTIONS.length;
+    fillEl.style.width = ((current + 1) / QUESTIONS.length * 100) + '%';
+    fillEl.parentElement.setAttribute('aria-valuenow', String(current + 1));
 
     optionsEl.innerHTML = '';
     optionsEl.setAttribute('data-count', String(q.options.length));

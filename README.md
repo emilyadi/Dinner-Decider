@@ -83,62 +83,13 @@ stews, pot pies and braises; hot and sunny keeps things light and grilled;
 
 ```
 index.html              markup for all three screens
-css/styles.css          layout, palette, portrait + landscape rules,
-                        and the two pixel fonts embedded as woff2
+css/styles.css          layout, palette, portrait + landscape rules
 js/meals.js             the 216-dish database
 js/app.js               quiz flow, scoring, result rendering
 sw.js                   offline cache
 manifest.webmanifest    home-screen app metadata
 icons/                  app icon (SVG + PNGs for iOS)
-icons/logo.png          start-screen artwork (156x107 native pixels)
 ```
-
-## The start-screen logo
-
-`icons/logo.png` is the supplied artwork, carrying both the characters and
-the wordmark — which is why the start screen has no text title.
-
-It arrived as a JPEG inside a PDF, so it had no alpha channel and the
-transparency checkerboard was baked in as real pixels. Getting it usable
-took three passes (`dealpha.py` and `snap.py` in the scratchpad):
-
-1. **Knock out the checkerboard.** Its two neutral tones sit at almost the
-   same brightness as the plate's porcelain, so brightness alone can't
-   separate them — the porcelain is markedly *bluer* (B−R ≈ 17 against
-   the background's ≈ 5), and that is what the test keys on. The outer
-   background is then flood-filled in from the frame so the plate's
-   interior can never be reached.
-2. **Clear enclosed pockets** — letter counters and the gaps between limbs
-   — but only where they genuinely show both checkerboard tones, so a pale
-   highlight inside the plate is left alone.
-3. **Resample to the native pixel grid.** The art is pixel art upscaled
-   ~5.86x, and JPEG had left ringing all over it. Fitting that grid against
-   the edge transitions and sampling each cell's centre yields the true
-   156x107 image, which is crisp at any size under
-   `image-rendering: pixelated` and free of compression noise.
-
-## Look and feel
-
-The app is styled as 8-bit: square corners everywhere, 4px outlines, hard
-offset shadows with no blur, stepped transitions, and a progress strip of
-eight discrete blocks. Buttons and answer cards move down onto their own
-shadow when pressed.
-
-The type runs on three tiers, because full-pixel body copy looked right but
-read badly:
-
-| tier | face | used for |
-|------|------|----------|
-| chrome | Press Start 2P | the question counter and the "Tonight, you should eat" line — short, fixed strings |
-| controls | Pixelify Sans | button labels — pixel-flavoured but legible |
-| reading | system sans | questions, answers, the tagline, the dish name |
-
-Both pixel faces are embedded in `css/styles.css` as base64 woff2 (latin
-subset, 22 KB together) rather than linked from Google Fonts, so the app
-keeps its look with no network — which matters, since it is meant to run
-offline from the Home Screen. The reading tier uses the device's own UI
-face, which costs nothing to load and is the most legible option on an
-iPad.
 
 ## Palette
 
