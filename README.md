@@ -90,16 +90,32 @@ js/app.js               quiz flow, scoring, result rendering
 sw.js                   offline cache
 manifest.webmanifest    home-screen app metadata
 icons/                  app icon (SVG + PNGs for iOS)
-icons/logo.svg          start-screen wordmark — PLACEHOLDER, see below
+icons/logo.png          start-screen artwork (156x107 native pixels)
 ```
 
 ## The start-screen logo
 
-`icons/logo.svg` is a stand-in I drew on a pixel grid. To use your own
-artwork, drop it in as `icons/logo.png` and point `#start-logo` in
-`index.html` at it — nothing else needs to change. If the file still has a
-checkerboard baked in where the transparency should be, it needs the
-background knocked out first.
+`icons/logo.png` is the supplied artwork, carrying both the characters and
+the wordmark — which is why the start screen has no text title.
+
+It arrived as a JPEG inside a PDF, so it had no alpha channel and the
+transparency checkerboard was baked in as real pixels. Getting it usable
+took three passes (`dealpha.py` and `snap.py` in the scratchpad):
+
+1. **Knock out the checkerboard.** Its two neutral tones sit at almost the
+   same brightness as the plate's porcelain, so brightness alone can't
+   separate them — the porcelain is markedly *bluer* (B−R ≈ 17 against
+   the background's ≈ 5), and that is what the test keys on. The outer
+   background is then flood-filled in from the frame so the plate's
+   interior can never be reached.
+2. **Clear enclosed pockets** — letter counters and the gaps between limbs
+   — but only where they genuinely show both checkerboard tones, so a pale
+   highlight inside the plate is left alone.
+3. **Resample to the native pixel grid.** The art is pixel art upscaled
+   ~5.86x, and JPEG had left ringing all over it. Fitting that grid against
+   the edge transitions and sampling each cell's centre yields the true
+   156x107 image, which is crisp at any size under
+   `image-rendering: pixelated` and free of compression noise.
 
 ## Look and feel
 
