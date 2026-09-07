@@ -32,8 +32,9 @@ To try it on a computer, just open the same URL in any browser.
 
 Every screen has **Back**, so you can change an answer without starting over.
 The result screen has **Give me another** (walks down the ranked matches) and
-**Restart** (erases every answer and returns to the beginning). The dish name
-is a link that searches Google for it.
+**Restart** (erases every answer and returns to the beginning). The result
+screen is deliberately minimal: "Tonight, you should eat", the dish name as a
+link that searches Google for it, and those two buttons.
 
 ## How the matching works
 
@@ -49,6 +50,10 @@ is a link that searches Google for it.
 | `a` | appetite sizes, 1–3 |
 | `w` | weather it suits |
 | `d` | `omni`, `veg` or `vegan` |
+
+Each dish also carries an emoji (`e`), an origin (`o`) and a one-line blurb
+(`b`). The result screen deliberately shows none of them — just the dish name
+— but they're kept in the data if you ever want to surface them again.
 
 `scoreMeal()` in `js/app.js` scores every dish against your answers. Utensil
 and "heavy on the" carry the most weight; messiness, spice, fanciness,

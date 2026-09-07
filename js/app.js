@@ -82,18 +82,6 @@
     }
   ];
 
-  /* ─────────────  chip labels for the result card  ───────────── */
-  const CHIPS = {
-    utensil:  { hand: '🙌 Hands-on', fork: '🍴 Fork food', spoon: '🥄 Spoon food', chop: '🥢 Chopsticks' },
-    mess:     { 1: '✨ Tidy', 2: '🧻 A napkin will do', 3: '🫧 Gloriously messy' },
-    spice:    { 0: '🍼 No heat', 1: '🌶️ Nicely spiced', 2: '🔥 Properly hot' },
-    fancy:    { 1: '🧻 Paper plates', 2: '🛋️ Night in', 3: '🍽️ Real silverware', 4: '🥂 Pinkies up' },
-    heavy:    { protein: '🥩 Protein-forward', veg: '🥦 Veg-forward', carbs: '🍞 Carb-forward' },
-    appetite: { 1: '🥗 Light', 2: '🙂 Just right', 3: '🍖 All the food' },
-    weather:  { cold: '🌧️ Cold-weather food', hot: '☀️ Warm-weather food', mild: '🌤️ Any-weather food' },
-    diet:     { veg: '🥕 Vegetarian', vegan: '🌱 Vegan' }
-  };
-
   /* ─────────────  state  ───────────── */
   const answers = {};
   let current = 0;        // index into QUESTIONS
@@ -185,46 +173,27 @@
 
   function scoreMeal(meal, a) {
     let score = 0;
-    const matched = [];
 
     // utensil — the strongest single signal
-    if (meal.u.indexOf(a.utensil) !== -1) { score += 30; matched.push(CHIPS.utensil[a.utensil]); }
+    if (meal.u.indexOf(a.utensil) !== -1) score += 30;
 
     // heavy on
-    if (meal.h.indexOf(a.heavy) !== -1) { score += 26; matched.push(CHIPS.heavy[a.heavy]); }
+    if (meal.h.indexOf(a.heavy) !== -1) score += 26;
 
     // an "animal" answer with no dietary restriction prefers actual meat/fish
     if (a.heavy === 'protein' && a.diet === 'none' && meal.d === 'omni') score += 6;
 
-    // messiness
-    const messGap = Math.abs(meal.m - a.mess);
-    score += Math.max(0, 22 - 11 * messGap);
-    if (messGap === 0) matched.push(CHIPS.mess[a.mess]);
-
-    // spice
-    const spiceGap = nearest(meal.s, a.spice);
-    score += Math.max(0, 20 - 12 * spiceGap);
-    if (spiceGap === 0) matched.push(CHIPS.spice[a.spice]);
-
-    // fanciness
-    const fancyGap = nearest(meal.f, a.fancy);
-    score += Math.max(0, 18 - 8 * fancyGap);
-    if (fancyGap === 0) matched.push(CHIPS.fancy[a.fancy]);
-
-    // appetite
-    const appGap = nearest(meal.a, a.appetite);
-    score += Math.max(0, 16 - 9 * appGap);
-    if (appGap === 0) matched.push(CHIPS.appetite[a.appetite]);
+    // the ordinal traits score by how far the dish sits from what was asked for
+    score += Math.max(0, 22 - 11 * Math.abs(meal.m - a.mess));
+    score += Math.max(0, 20 - 12 * nearest(meal.s, a.spice));
+    score += Math.max(0, 18 - 8 * nearest(meal.f, a.fancy));
+    score += Math.max(0, 16 - 9 * nearest(meal.a, a.appetite));
 
     // weather
-    if (meal.w.indexOf(a.weather) !== -1) {
-      score += 14;
-      matched.push(CHIPS.weather[a.weather]);
-    } else if (meal.w.indexOf('mild') !== -1 || a.weather === 'mild') {
-      score += 5;
-    }
+    if (meal.w.indexOf(a.weather) !== -1) score += 14;
+    else if (meal.w.indexOf('mild') !== -1 || a.weather === 'mild') score += 5;
 
-    return { meal: meal, score: score, matched: matched };
+    return { meal: meal, score: score };
   }
 
   function buildRanking() {
@@ -257,23 +226,8 @@
     const entry = ranked[pick % ranked.length];
     const meal = entry.meal;
 
-    $('result-emoji').textContent = meal.e;
     $('result-name-text').textContent = meal.n;
     $('result-name').href = 'https://www.google.com/search?q=' + encodeURIComponent(meal.n);
-    $('result-origin').textContent = meal.o;
-    $('result-blurb').textContent = meal.b;
-
-    const chips = entry.matched.slice(0, 5);
-    if (answers.diet === 'veg' || answers.diet === 'vegan') chips.push(CHIPS.diet[answers.diet]);
-
-    const tagList = $('result-tags');
-    tagList.innerHTML = '';
-    chips.forEach(function (c) {
-      if (!c) return;
-      const li = document.createElement('li');
-      li.textContent = c;
-      tagList.appendChild(li);
-    });
 
     const card = $('result-card');
     card.classList.remove('is-swapping');
