@@ -24,7 +24,7 @@ To try it on a computer, just open the same URL in any browser.
 1. What utensil are you using? — hands / fork / spoon / chopsticks
 2. How messy do you want to be? — neat / medium / messy
 3. How much spice? — zero / medium / Arrakis
-4. How fancy are you feeling? — paper plates → pinkies up
+4. How fancy are you feeling? — plastic tablecloths / a regular night in / pinkies up
 5. Heavy on the — animal / vegetable / carbs
 6. What's your appetite? — light / normal / all the food
 7. What's the weather? — cold and rainy / hot and sunny / couldn't ask for better
@@ -38,14 +38,14 @@ link that searches Google for it, and those two buttons.
 
 ## How the matching works
 
-`js/meals.js` holds 178 dishes, each tagged against all eight questions:
+`js/meals.js` holds 216 dishes, each tagged against all eight questions:
 
 | field | meaning |
 |-------|---------|
 | `u` | utensils it's eaten with |
 | `m` | messiness, 1–3 |
 | `s` | spice levels it suits, 0–2 |
-| `f` | fanciness levels it fits, 1–4 |
+| `f` | fanciness levels it fits, 1–3 |
 | `h` | protein / veg / carbs forward |
 | `a` | appetite sizes, 1–3 |
 | `w` | weather it suits |
@@ -54,6 +54,13 @@ link that searches Google for it, and those two buttons.
 Each dish also carries an emoji (`e`), an origin (`o`) and a one-line blurb
 (`b`). The result screen deliberately shows none of them — just the dish name
 — but they're kept in the data if you ever want to surface them again.
+
+The list includes signature and most-popular main courses from Allrecipes
+(Marry Me Chicken, beef stroganoff, baked ziti, zuppa toscana, chicken and
+dumplings, General Tso's, salisbury steak and more) and from NYT Cooking
+(buttermilk-brined roast chicken, bo ssam, the spiced chickpea stew,
+caramelized shallot pasta, chicken marbella, red lentil soup, gochujang
+buttered noodles, mushroom bourguignon and more). Desserts are excluded.
 
 `scoreMeal()` in `js/app.js` scores every dish against your answers. Utensil
 and "heavy on the" carry the most weight; messiness, spice, fanciness,
@@ -75,7 +82,7 @@ stews, pot pies and braises; hot and sunny keeps things light and grilled;
 ```
 index.html              markup for all three screens
 css/styles.css          layout, palette, portrait + landscape rules
-js/meals.js             the 178-dish database
+js/meals.js             the 216-dish database
 js/app.js               quiz flow, scoring, result rendering
 sw.js                   offline cache
 manifest.webmanifest    home-screen app metadata
@@ -84,4 +91,10 @@ icons/                  app icon (SVG + PNGs for iOS)
 
 ## Palette
 
-`#FF7F50` coral · `#FFD166` sun · `#06D6A0` mint · `#118AB2` sea
+`#06D6A0` green is the app's solid background. `#FF7F50` coral is the single
+action colour (Next, Let's eat, Give me another, the selected answer).
+`#FFD166` sun rings the plate mark and `#118AB2` sea names the chosen dish.
+
+Nothing is written in white or yellow directly on the green — at 1.9:1 and
+1.3:1 those are unreadable. Text on the green uses `#073B32`, a darkened form
+of the ground itself, at 6.6:1.

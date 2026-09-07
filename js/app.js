@@ -10,74 +10,73 @@
       key: 'utensil',
       text: 'Pretend you&rsquo;re eating. What utensil are you using?',
       options: [
-        { v: 'hand',  e: '🙌', label: 'Hands' },
-        { v: 'fork',  e: '🍴', label: 'Fork' },
-        { v: 'spoon', e: '🥄', label: 'Spoon' },
-        { v: 'chop',  e: '🥢', label: 'Chopsticks' }
+        { v: 'hand',  label: 'Hands' },
+        { v: 'fork',  label: 'Fork' },
+        { v: 'spoon', label: 'Spoon' },
+        { v: 'chop',  label: 'Chopsticks' }
       ]
     },
     {
       key: 'mess',
       text: 'How messy do you want to be?',
       options: [
-        { v: 1, e: '✨', label: 'Neat. I&rsquo;ve got places to be' },
-        { v: 2, e: '🧻', label: 'Medium &mdash; I&rsquo;ve got a napkin' },
-        { v: 3, e: '🫧', label: 'Messy &mdash; washing machines exist for a reason' }
+        { v: 1, label: 'Neat. I&rsquo;ve got places to be' },
+        { v: 2, label: 'Medium &mdash; I&rsquo;ve got a napkin' },
+        { v: 3, label: 'Messy &mdash; washing machines exist for a reason' }
       ]
     },
     {
       key: 'spice',
       text: 'How much spice are you in the mood for?',
       options: [
-        { v: 0, e: '🍼', label: 'Zero &mdash; toddler level' },
-        { v: 1, e: '🌶️', label: 'Taco Bell Fire Sauce is my jam' },
-        { v: 2, e: '🔥', label: 'I&rsquo;m from Arrakis &mdash; give me all spice' }
+        { v: 0, label: 'Zero &mdash; toddler level' },
+        { v: 1, label: 'Taco Bell Fire Sauce is my jam' },
+        { v: 2, label: 'I&rsquo;m from Arrakis &mdash; give me all spice' }
       ]
     },
     {
       key: 'fancy',
       text: 'How fancy are you feeling?',
       options: [
-        { v: 1, e: '🧻', label: 'Paper plates and plastic forks' },
-        { v: 2, e: '🛋️', label: 'A typical night in' },
-        { v: 3, e: '🍽️', label: 'Non-plastic silverware' },
-        { v: 4, e: '🥂', label: 'Pinkies up!' }
+        { v: 1, label: 'Plastic tablecloths' },
+        { v: 2, label: 'A regular night in' },
+        { v: 3, label: 'Pinkies up!' }
       ]
     },
     {
       key: 'heavy',
       text: 'Heavy on the:',
       options: [
-        { v: 'protein', e: '🥩', label: 'Animal' },
-        { v: 'veg',     e: '🥦', label: 'Vegetable' },
-        { v: 'carbs',   e: '🍞', label: 'Carbs' }
+        { v: 'protein', label: 'Animal' },
+        { v: 'veg',     label: 'Vegetable' },
+        { v: 'carbs',   label: 'Carbs' }
       ]
     },
     {
       key: 'appetite',
       text: 'What&rsquo;s your appetite?',
       options: [
-        { v: 1, e: '🥗', label: 'Something light' },
-        { v: 2, e: '🙂', label: 'I could eat' },
-        { v: 3, e: '🍖', label: 'GIVE ME ALL THE FOOD' }
+        { v: 1, label: 'Something light' },
+        { v: 2, label: 'I could eat' },
+        { v: 3, label: 'GIVE ME ALL THE FOOD' }
       ]
     },
     {
       key: 'weather',
       text: 'What&rsquo;s the weather?',
       options: [
-        { v: 'cold', e: '🌧️', label: 'Cold and rainy' },
-        { v: 'hot',  e: '☀️', label: 'Hot and sunny' },
-        { v: 'mild', e: '🌤️', label: 'Couldn&rsquo;t ask for better!' }
+        { v: 'cold', label: 'Cold and rainy' },
+        { v: 'hot',  label: 'Hot and sunny' },
+        { v: 'mild', label: 'Couldn&rsquo;t ask for better!' }
       ]
     },
     {
       key: 'diet',
       text: 'Any dietary restrictions?',
       options: [
-        { v: 'none',  e: '🍗', label: 'Nope, anything goes' },
-        { v: 'veg',   e: '🥕', label: 'Vegetarian' },
-        { v: 'vegan', e: '🌱', label: 'Vegan' }
+        { v: 'none',  label: 'Nope, anything goes' },
+        { v: 'veg',   label: 'Vegetarian' },
+        { v: 'vegan', label: 'Vegan' }
       ]
     }
   ];
@@ -135,7 +134,6 @@
       if (chosen) btn.classList.add('is-selected');
 
       btn.innerHTML =
-        '<span class="option__emoji" aria-hidden="true">' + opt.e + '</span>' +
         '<span class="option__label">' + opt.label + '</span>' +
         '<span class="option__check" aria-hidden="true">✓</span>';
 
