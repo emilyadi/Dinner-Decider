@@ -23,12 +23,10 @@
   <!-- ─────────────  START  ───────────── -->
   <section class="screen screen--start is-active" id="screen-start">
     <div class="start">
-      <div class="start__plate" aria-hidden="true">
-        <span class="start__fork">🍴</span>
-      </div>
-      <h1 class="start__title">Dinner<span>Decider</span></h1>
-      <p class="start__tagline">Eight questions. One answer. No more &ldquo;I don&rsquo;t know, what do <em>you</em> want?&rdquo;</p>
-      <button class="btn btn--go" id="btn-start" type="button">Let&rsquo;s eat</button>
+      <img class="start__logo" id="start-logo" src="icons/logo.svg"
+           alt="Dinner Decider" width="640" height="440">
+      <p class="start__tagline">Can&rsquo;t decide what to eat? Take the quiz.</p>
+      <button class="btn btn--go" id="btn-start" type="button">Start</button>
     </div>
   </section>
 
@@ -39,9 +37,7 @@
         <span class="quiz__step" id="quiz-step">Question 1 of 8</span>
         <span class="quiz__brand">Dinner Decider</span>
       </div>
-      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="1" aria-label="Progress">
-        <div class="progress__fill" id="progress-fill"></div>
-      </div>
+      <div class="progress" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="1" aria-label="Progress"></div>
     </header>
 
     <div class="quiz__body">
@@ -51,10 +47,7 @@
 
     <footer class="quiz__foot">
       <button class="btn btn--ghost" id="btn-back" type="button">
-        <span aria-hidden="true">←</span> Back
-      </button>
-      <button class="btn btn--next" id="btn-next" type="button" disabled>
-        Next <span aria-hidden="true">→</span>
+        <span aria-hidden="true">&lt;</span> Back
       </button>
     </footer>
   </section>

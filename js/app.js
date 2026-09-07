@@ -97,9 +97,11 @@
   const optionsEl  = $('options');
   const questionEl = $('question-text');
   const stepEl     = $('quiz-step');
-  const fillEl     = $('progress-fill');
+  const progressEl = $('progress');
   const backBtn    = $('btn-back');
-  const nextBtn    = $('btn-next');
+
+  // blocks the double-tap that would otherwise skip a question
+  let advancing = false;
 
   /* ─────────────  screen switching  ───────────── */
   function show(name) {
@@ -117,9 +119,15 @@
     const q = QUESTIONS[current];
 
     questionEl.innerHTML = q.text;
-    stepEl.textContent = 'Question ' + (current + 1) + ' of ' + QUESTIONS.length;
-    fillEl.style.width = ((current + 1) / QUESTIONS.length * 100) + '%';
-    fillEl.parentElement.setAttribute('aria-valuenow', String(current + 1));
+    stepEl.textContent = 'Q' + (current + 1) + ' / ' + QUESTIONS.length;
+    progressEl.setAttribute('aria-valuenow', String(current + 1));
+
+    progressEl.innerHTML = '';
+    for (var i = 0; i < QUESTIONS.length; i++) {
+      const block = document.createElement('span');
+      block.className = 'progress__block' + (i <= current ? ' is-on' : '');
+      progressEl.appendChild(block);
+    }
 
     optionsEl.innerHTML = '';
     optionsEl.setAttribute('data-count', String(q.options.length));
@@ -138,6 +146,7 @@
         '<span class="option__check" aria-hidden="true">✓</span>';
 
       btn.addEventListener('click', function () {
+        if (advancing) return;
         answers[q.key] = opt.v;
         Array.prototype.forEach.call(optionsEl.children, function (child) {
           child.classList.remove('is-selected');
@@ -145,16 +154,18 @@
         });
         btn.classList.add('is-selected');
         btn.setAttribute('aria-checked', 'true');
-        nextBtn.disabled = false;
+
+        // let the choice register visibly, then move on by itself
+        advancing = true;
+        setTimeout(function () {
+          advancing = false;
+          goNext();
+        }, 260);
       });
 
       optionsEl.appendChild(btn);
     });
 
-    nextBtn.disabled = answers[q.key] === undefined;
-    nextBtn.innerHTML = (current === QUESTIONS.length - 1)
-      ? 'Feed me <span aria-hidden="true">→</span>'
-      : 'Next <span aria-hidden="true">→</span>';
   }
 
   /* ─────────────  the matcher  ───────────── */
@@ -247,6 +258,7 @@
   }
 
   function goBack() {
+    if (advancing) return;
     if (current === 0) {
       show('start');
       return;
@@ -257,6 +269,7 @@
 
   function restart() {
     Object.keys(answers).forEach(function (k) { delete answers[k]; });
+    advancing = false;
     current = 0;
     ranked = [];
     pick = 0;
@@ -269,7 +282,6 @@
     renderQuestion();
     show('quiz');
   });
-  nextBtn.addEventListener('click', goNext);
   backBtn.addEventListener('click', goBack);
   $('btn-restart').addEventListener('click', restart);
   $('btn-another').addEventListener('click', function () {

@@ -30,7 +30,9 @@ To try it on a computer, just open the same URL in any browser.
 7. What's the weather? — cold and rainy / hot and sunny / couldn't ask for better
 8. Any dietary restrictions? — none / vegetarian / vegan
 
-Every screen has **Back**, so you can change an answer without starting over.
+Choosing an answer moves straight to the next question — there is no Next
+button. Every screen has **Back**, so you can change an answer without
+starting over.
 The result screen has **Give me another** (walks down the ranked matches) and
 **Restart** (erases every answer and returns to the beginning). The result
 screen is deliberately minimal: "Tonight, you should eat", the dish name as a
@@ -81,13 +83,37 @@ stews, pot pies and braises; hot and sunny keeps things light and grilled;
 
 ```
 index.html              markup for all three screens
-css/styles.css          layout, palette, portrait + landscape rules
+css/styles.css          layout, palette, portrait + landscape rules,
+                        and the two pixel fonts embedded as woff2
 js/meals.js             the 216-dish database
 js/app.js               quiz flow, scoring, result rendering
 sw.js                   offline cache
 manifest.webmanifest    home-screen app metadata
 icons/                  app icon (SVG + PNGs for iOS)
+icons/logo.svg          start-screen wordmark — PLACEHOLDER, see below
 ```
+
+## The start-screen logo
+
+`icons/logo.svg` is a stand-in I drew on a pixel grid. To use your own
+artwork, drop it in as `icons/logo.png` and point `#start-logo` in
+`index.html` at it — nothing else needs to change. If the file still has a
+checkerboard baked in where the transparency should be, it needs the
+background knocked out first.
+
+## Look and feel
+
+The app is styled as 8-bit: square corners everywhere, 4px outlines, hard
+offset shadows with no blur, stepped transitions, and a progress strip of
+eight discrete blocks. Buttons and answer cards move down onto their own
+shadow when pressed. Type is **Press Start 2P** for display (buttons,
+labels, the dish name) and **Pixelify Sans** for questions and answers,
+which stays readable at length where Press Start 2P would not.
+
+Both faces are embedded in `css/styles.css` as base64 woff2 (latin subset,
+22 KB together) rather than linked from Google Fonts, so the app keeps its
+look with no network — which matters, since it is meant to run offline from
+the Home Screen.
 
 ## Palette
 
