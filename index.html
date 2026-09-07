@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dinner Decider</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="description" content="Answer eight questions, get one dinner you can actually commit to.">
+<meta name="theme-color" content="#FF7F50">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Dinner Decider">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="blobs" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+</div>
+
+<main class="app" id="app">
+
+  <!-- ─────────────  START  ───────────── -->
+  <section class="screen screen--start is-active" id="screen-start">
+    <div class="start">
+      <div class="start__plate" aria-hidden="true">
+        <span class="start__fork">🍴</span>
+      </div>
+      <h1 class="start__title">Dinner<span>Decider</span></h1>
+      <p class="start__tagline">Eight questions. One answer. No more &ldquo;I don&rsquo;t know, what do <em>you</em> want?&rdquo;</p>
+      <button class="btn btn--go" id="btn-start" type="button">Let&rsquo;s eat</button>
+    </div>
+  </section>
+
+  <!-- ─────────────  QUESTIONS  ───────────── -->
+  <section class="screen screen--quiz" id="screen-quiz">
+    <header class="quiz__head">
+      <div class="quiz__meta">
+        <span class="quiz__step" id="quiz-step">Question 1 of 8</span>
+        <span class="quiz__brand">Dinner Decider</span>
+      </div>
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="1" aria-label="Progress">
+        <div class="progress__fill" id="progress-fill"></div>
+      </div>
+    </header>
+
+    <div class="quiz__body">
+      <h2 class="question" id="question-text">&nbsp;</h2>
+      <div class="options" id="options" role="radiogroup" aria-labelledby="question-text"></div>
+    </div>
+
+    <footer class="quiz__foot">
+      <button class="btn btn--ghost" id="btn-back" type="button">
+        <span aria-hidden="true">←</span> Back
+      </button>
+      <button class="btn btn--next" id="btn-next" type="button" disabled>
+        Next <span aria-hidden="true">→</span>
+      </button>
+    </footer>
+  </section>
+
+  <!-- ─────────────  RESULT  ───────────── -->
+  <section class="screen screen--result" id="screen-result">
+    <div class="result" id="result-card">
+      <p class="result__kicker">Tonight you&rsquo;re eating</p>
+      <div class="result__emoji" id="result-emoji" aria-hidden="true">🍽️</div>
+      <a class="result__name" id="result-name" href="#" target="_blank" rel="noopener noreferrer">
+        <span id="result-name-text">Dinner</span>
+        <svg class="result__search" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+          <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <line x1="15.6" y1="15.6" x2="21" y2="21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </a>
+      <p class="result__origin" id="result-origin">United States</p>
+      <p class="result__blurb" id="result-blurb"></p>
+      <ul class="tags" id="result-tags"></ul>
+      <p class="result__hint">Tap the dish name to look it up on Google</p>
+    </div>
+    <footer class="result__foot">
+      <button class="btn btn--another" id="btn-another" type="button">Give me another</button>
+      <button class="btn btn--restart" id="btn-restart" type="button">Restart</button>
+    </footer>
+  </section>
+
+</main>
+
+<script src="js/meals.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
