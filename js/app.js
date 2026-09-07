@@ -20,27 +20,27 @@
       key: 'mess',
       text: 'How messy do you want to be?',
       options: [
-        { v: 1, label: 'Neat. I&rsquo;ve got places to be' },
-        { v: 2, label: 'Medium &mdash; I&rsquo;ve got a napkin' },
-        { v: 3, label: 'Messy &mdash; washing machines exist for a reason' }
+        { v: 1, label: 'Not at all.' },
+        { v: 2, label: 'Medium' },
+        { v: 3, label: 'Messy' }
       ]
     },
     {
       key: 'spice',
       text: 'How much spice are you in the mood for?',
       options: [
-        { v: 0, label: 'Zero &mdash; toddler level' },
-        { v: 1, label: 'Taco Bell Fire Sauce is my jam' },
-        { v: 2, label: 'I&rsquo;m from Arrakis &mdash; give me all spice' }
+        { v: 0, label: 'Zero-toddler level.' },
+        { v: 1, label: 'Medium' },
+        { v: 2, label: 'Hot like the sun.' }
       ]
     },
     {
       key: 'fancy',
       text: 'How fancy are you feeling?',
       options: [
-        { v: 1, label: 'Plastic tablecloths' },
-        { v: 2, label: 'A regular night in' },
-        { v: 3, label: 'Pinkies up!' }
+        { v: 1, label: 'Not at all' },
+        { v: 2, label: 'A little fancy' },
+        { v: 3, label: 'Very fancy&mdash;pinkies up!' }
       ]
     },
     {
@@ -56,9 +56,9 @@
       key: 'appetite',
       text: 'What&rsquo;s your appetite?',
       options: [
-        { v: 1, label: 'Something light' },
+        { v: 1, label: 'Not very hungry' },
         { v: 2, label: 'I could eat' },
-        { v: 3, label: 'GIVE ME ALL THE FOOD' }
+        { v: 3, label: 'GIVE ME ALL THE FOOD.' }
       ]
     },
     {
@@ -67,14 +67,14 @@
       options: [
         { v: 'cold', label: 'Cold and rainy' },
         { v: 'hot',  label: 'Hot and sunny' },
-        { v: 'mild', label: 'Couldn&rsquo;t ask for better!' }
+        { v: 'mild', label: 'It&rsquo;s a beautiful day' }
       ]
     },
     {
       key: 'diet',
       text: 'Any dietary restrictions?',
       options: [
-        { v: 'none',  label: 'Nope, anything goes' },
+        { v: 'none',  label: 'Nope&mdash;anything goes' },
         { v: 'veg',   label: 'Vegetarian' },
         { v: 'vegan', label: 'Vegan' }
       ]
