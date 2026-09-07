@@ -42,8 +42,12 @@
   --pad-left:   max(22px, env(safe-area-inset-left));
   --pad-right:  max(22px, env(safe-area-inset-right));
 
-  --font-display: "Press Start 2P", "Courier New", ui-monospace, monospace;
-  --font-body:    "Pixelify Sans", "Courier New", ui-monospace, monospace;
+  /* Pixel faces stay on the short chrome; reading text gets a clean face.
+     Full-pixel body copy looked the part but cost too much legibility. */
+  --font-chrome: "Press Start 2P", "Courier New", ui-monospace, monospace;
+  --font-pixel:  "Pixelify Sans", "Courier New", ui-monospace, monospace;
+  --font-read:   -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+                 "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -56,7 +60,7 @@ html, body {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-read);
   font-weight: 600;
   color: var(--on-ground);
   background: var(--ground);
@@ -90,8 +94,8 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
 
 /* ─────────────  buttons  ───────────── */
 .btn {
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-family: var(--font-pixel);
+  font-weight: 700;
   border: var(--edge) solid var(--ink);
   border-radius: 0;
   cursor: pointer;
@@ -109,28 +113,28 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
 .btn--go {
   background: var(--coral);
   color: var(--coral-ink);
-  font-size: clamp(13px, 1.9vmin, 20px);
-  padding: clamp(16px, 2.2vmin, 24px) clamp(28px, 4.2vmin, 46px);
+  font-size: clamp(19px, 2.7vmin, 28px);
+  padding: clamp(15px, 2.1vmin, 23px) clamp(28px, 4.2vmin, 46px);
 }
 
 .btn--ghost {
   background: var(--card);
   color: var(--ink);
-  font-size: clamp(10px, 1.4vmin, 14px);
-  padding: clamp(12px, 1.7vmin, 17px) clamp(18px, 2.6vmin, 28px);
+  font-size: clamp(16px, 2.1vmin, 21px);
+  padding: clamp(11px, 1.6vmin, 16px) clamp(18px, 2.6vmin, 28px);
 }
 
 .btn--another {
   background: var(--coral);
   color: var(--coral-ink);
-  font-size: clamp(10px, 1.5vmin, 15px);
-  padding: clamp(14px, 1.9vmin, 19px) clamp(20px, 3vmin, 32px);
+  font-size: clamp(16px, 2.2vmin, 22px);
+  padding: clamp(13px, 1.8vmin, 18px) clamp(20px, 3vmin, 32px);
 }
 .btn--restart {
   background: var(--sun);
   color: var(--coral-ink);
-  font-size: clamp(10px, 1.5vmin, 15px);
-  padding: clamp(14px, 1.9vmin, 19px) clamp(20px, 3vmin, 32px);
+  font-size: clamp(16px, 2.2vmin, 22px);
+  padding: clamp(13px, 1.8vmin, 18px) clamp(20px, 3vmin, 32px);
 }
 
 /* ─────────────  start screen  ───────────── */
@@ -146,7 +150,8 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
 .start__tagline {
   margin: 0;
   max-width: 22ch;
-  font-size: clamp(17px, 2.6vmin, 27px);
+  font-family: var(--font-read);
+  font-size: clamp(18px, 2.7vmin, 28px);
   font-weight: 700;
   line-height: 1.5;
   color: var(--on-ground);
@@ -164,12 +169,12 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
   margin-bottom: clamp(9px, 1.3vmin, 14px);
 }
 .quiz__step {
-  font-family: var(--font-display);
+  font-family: var(--font-chrome);
   font-size: clamp(10px, 1.4vmin, 14px);
   color: var(--on-ground);
 }
 .quiz__brand {
-  font-family: var(--font-display);
+  font-family: var(--font-chrome);
   font-size: clamp(8px, 1.1vmin, 11px);
   color: rgba(13, 43, 36, .55);
 }
@@ -199,9 +204,10 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
 .question {
   margin: 0 auto;
   text-align: center;
-  font-family: var(--font-body);
-  font-size: clamp(25px, 4.4vmin, 46px);
-  font-weight: 700;
+  font-family: var(--font-read);
+  font-size: clamp(26px, 4.6vmin, 48px);
+  font-weight: 800;
+  letter-spacing: -.5px;
   line-height: 1.2;
   color: var(--on-ground);
   max-width: 20ch;
@@ -228,9 +234,9 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
   border: var(--edge) solid var(--ink);
   border-radius: 0;
   box-shadow: var(--drop) var(--drop) 0 var(--ink);
-  font-family: var(--font-body);
-  font-size: clamp(17px, 2.3vmin, 25px);
-  font-weight: 600;
+  font-family: var(--font-read);
+  font-size: clamp(18px, 2.4vmin, 26px);
+  font-weight: 650;
   line-height: 1.3;
   color: var(--ink-card);
   text-align: left;
@@ -262,8 +268,9 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
   background: var(--card);
   display: grid;
   place-items: center;
-  font-family: var(--font-display);
-  font-size: clamp(10px, 1.3vmin, 14px);
+  font-family: var(--font-read);
+  font-weight: 800;
+  font-size: clamp(14px, 1.8vmin, 19px);
   color: var(--ink);
   opacity: 0;
 }
@@ -294,8 +301,8 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
 
 .result__kicker {
   margin: 0 0 clamp(18px, 3vmin, 34px);
-  font-family: var(--font-display);
-  font-size: clamp(10px, 1.4vmin, 14px);
+  font-family: var(--font-chrome);
+  font-size: clamp(9px, 1.3vmin, 13px);
   line-height: 1.6;
   color: var(--ink-card);
 }
@@ -306,9 +313,11 @@ img { image-rendering: pixelated; image-rendering: crisp-edges; }
   justify-content: center;
   gap: clamp(10px, 1.5vmin, 18px);
   flex-wrap: wrap;
-  font-family: var(--font-display);
-  font-size: clamp(15px, 2.7vmin, 30px);
-  line-height: 1.7;
+  font-family: var(--font-read);
+  font-weight: 800;
+  letter-spacing: -.8px;
+  font-size: clamp(30px, 5.2vmin, 58px);
+  line-height: 1.15;
   color: var(--sea);
   text-decoration: none;
   border-bottom: 5px solid var(--sea);

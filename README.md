@@ -106,14 +106,23 @@ background knocked out first.
 The app is styled as 8-bit: square corners everywhere, 4px outlines, hard
 offset shadows with no blur, stepped transitions, and a progress strip of
 eight discrete blocks. Buttons and answer cards move down onto their own
-shadow when pressed. Type is **Press Start 2P** for display (buttons,
-labels, the dish name) and **Pixelify Sans** for questions and answers,
-which stays readable at length where Press Start 2P would not.
+shadow when pressed.
 
-Both faces are embedded in `css/styles.css` as base64 woff2 (latin subset,
-22 KB together) rather than linked from Google Fonts, so the app keeps its
-look with no network — which matters, since it is meant to run offline from
-the Home Screen.
+The type runs on three tiers, because full-pixel body copy looked right but
+read badly:
+
+| tier | face | used for |
+|------|------|----------|
+| chrome | Press Start 2P | the question counter and the "Tonight, you should eat" line — short, fixed strings |
+| controls | Pixelify Sans | button labels — pixel-flavoured but legible |
+| reading | system sans | questions, answers, the tagline, the dish name |
+
+Both pixel faces are embedded in `css/styles.css` as base64 woff2 (latin
+subset, 22 KB together) rather than linked from Google Fonts, so the app
+keeps its look with no network — which matters, since it is meant to run
+offline from the Home Screen. The reading tier uses the device's own UI
+face, which costs nothing to load and is the most legible option on an
+iPad.
 
 ## Palette
 
