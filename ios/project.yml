@@ -1,0 +1,38 @@
+# Fallback project definition. If the checked-in DinnerDecider.xcodeproj ever
+# refuses to open (an Xcode version mismatch, say), regenerate it with:
+#     brew install xcodegen && cd ios && xcodegen generate
+name: DinnerDecider
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+targets:
+  DinnerDecider:
+    type: application
+    platform: iOS
+    sources: [DinnerDecider]
+    settings:
+      base:
+        PRODUCT_NAME: Dinner
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.whatshouldieatfordinner
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Dinner
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIStatusBarStyle: UIStatusBarStyleDarkContent
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+  DinnerDeciderTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [DinnerDeciderTests]
+    dependencies:
+      - target: DinnerDecider

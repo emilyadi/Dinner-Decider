@@ -88,6 +88,13 @@ The weather answer works as the brief intended: cold and rainy leans into
 stews, pot pies and braises; hot and sunny keeps things light and grilled;
 "couldn't ask for better" avoids the heaviest dishes.
 
+## The iOS app
+
+`ios/` holds a native SwiftUI port of this app, structured for the App Store,
+with its own README covering signing and submission. The dish database there is
+generated from `js/meals.js` by `scripts/gen-swift-meals.js` — regenerate it
+after changing the dishes.
+
 ## Files
 
 ```
