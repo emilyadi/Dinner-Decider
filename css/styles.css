@@ -127,16 +127,7 @@ body {
 }
 
 /* ─────────────  start screen  ───────────── */
-.screen--start {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-image:
-    radial-gradient(circle, rgba(255, 209, 102, .30) 0 7px, transparent 7.5px),
-    radial-gradient(circle, rgba(255, 255, 255, .16) 0 4.5px, transparent 5px);
-  background-size: 118px 118px, 118px 118px;
-  background-position: 0 0, 59px 59px;
-}
+.screen--start { align-items: center; justify-content: center; text-align: center; }
 .start { max-width: 760px; }
 
 .start__plate {
@@ -245,15 +236,20 @@ body {
   width: 100%;
   max-width: 1100px;
   margin-inline: auto;
+  justify-content: center;
 }
-.options[data-count="2"] { grid-template-columns: repeat(2, 1fr); }
-.options[data-count="3"] { grid-template-columns: repeat(3, 1fr); }
-.options[data-count="4"] { grid-template-columns: repeat(2, 1fr); }
+/* minmax lets a column shrink on a narrow screen but never balloon past the
+   width its longest label actually needs */
+.options[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 340px)); }
+.options[data-count="3"] { grid-template-columns: repeat(3, minmax(0, 340px)); }
+.options[data-count="4"] { grid-template-columns: repeat(4, minmax(0, 240px)); }
 
 .option {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: clamp(12px, 1.8vmin, 20px);
   padding: clamp(16px, 2.4vmin, 28px) clamp(22px, 3vmin, 34px);
   background: var(--card);
@@ -274,7 +270,7 @@ body {
 }
 .option:active { transform: scale(.975); }
 
-.option__label { flex: 1 1 auto; }
+.option__label { flex: 0 1 auto; }
 
 .option.is-selected {
   border-color: var(--coral);
@@ -283,6 +279,10 @@ body {
 }
 
 .option__check {
+  position: absolute;
+  right: clamp(12px, 1.8vmin, 18px);
+  top: 50%;
+  margin-top: calc(clamp(28px, 3.4vmin, 36px) / -2);
   flex: 0 0 auto;
   width: clamp(28px, 3.4vmin, 36px);
   height: clamp(28px, 3.4vmin, 36px);
@@ -371,10 +371,11 @@ body {
 
 /* portrait tablet: one big column reads better than squeezed cards */
 @media (orientation: portrait) and (min-width: 701px) {
-  .options[data-count="3"],
-  .options[data-count="4"] { grid-template-columns: 1fr; }
-  .options { max-width: 760px; gap: clamp(14px, 2vmin, 22px); }
-  .option { min-height: clamp(96px, 13vmin, 132px); }
+  .options[data-count="2"],
+  .options[data-count="3"] { grid-template-columns: minmax(0, 440px); }
+  .options[data-count="4"] { grid-template-columns: repeat(2, minmax(0, 300px)); }
+  .options { gap: clamp(13px, 1.9vmin, 20px); }
+  .option { min-height: clamp(76px, 9.5vmin, 96px); }
   .question { font-size: clamp(30px, 5.6vmin, 54px); }
 }
 

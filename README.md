@@ -96,9 +96,7 @@ icons/                  app icon (SVG + PNGs for iOS)
 
 ## Palette
 
-`#06D6A0` green is the app's background, carrying a quiet two-tone polka
-pattern on the home screen only — the quiz and result screens stay flat so
-nothing competes with the questions. `#FF7F50` coral is the single
+`#06D6A0` green is the app's solid background on every screen. `#FF7F50` coral is the single
 action colour (Next, Let's eat, Give me another, the selected answer).
 `#FFD166` sun rings the plate mark, badges the question counter, caps the
 result card and fills the Restart button; `#118AB2` sea names the chosen
