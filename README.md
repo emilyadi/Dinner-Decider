@@ -40,7 +40,7 @@ link that searches Google for it, and those two buttons.
 
 ## How the matching works
 
-`js/meals.js` holds 216 dishes, each tagged against all eight questions:
+`js/meals.js` holds 237 dishes, each tagged against all eight questions:
 
 | field | meaning |
 |-------|---------|
@@ -62,7 +62,10 @@ The list includes signature and most-popular main courses from Allrecipes
 dumplings, General Tso's, salisbury steak and more) and from NYT Cooking
 (buttermilk-brined roast chicken, bo ssam, the spiced chickpea stew,
 caramelized shallot pasta, chicken marbella, red lentil soup, gochujang
-buttered noodles, mushroom bourguignon and more). Desserts are excluded.
+buttered noodles and more), and from Smitten Kitchen (pizza beans, zucchini
+butter spaghetti, sheet-pan chicken tikka, broccoli melts, the squash and
+caramelized onion galette, chicken with forty cloves of garlic, mushroom
+bourguignon and more). Desserts are excluded.
 
 `scoreMeal()` in `js/app.js` scores every dish against your answers. Utensil
 and "heavy on the" carry the most weight; messiness, spice, fanciness,
@@ -84,7 +87,7 @@ stews, pot pies and braises; hot and sunny keeps things light and grilled;
 ```
 index.html              markup for all three screens
 css/styles.css          layout, palette, portrait + landscape rules
-js/meals.js             the 216-dish database
+js/meals.js             the 237-dish database
 js/app.js               quiz flow, scoring, result rendering
 sw.js                   offline cache
 manifest.webmanifest    home-screen app metadata
@@ -93,9 +96,13 @@ icons/                  app icon (SVG + PNGs for iOS)
 
 ## Palette
 
-`#06D6A0` green is the app's solid background. `#FF7F50` coral is the single
+`#06D6A0` green is the app's background, carrying a quiet two-tone polka
+pattern on the home screen only — the quiz and result screens stay flat so
+nothing competes with the questions. `#FF7F50` coral is the single
 action colour (Next, Let's eat, Give me another, the selected answer).
-`#FFD166` sun rings the plate mark and `#118AB2` sea names the chosen dish.
+`#FFD166` sun rings the plate mark, badges the question counter, caps the
+result card and fills the Restart button; `#118AB2` sea names the chosen
+dish.
 
 Nothing is written in white or yellow directly on the green — at 1.9:1 and
 1.3:1 those are unreadable. Text on the green uses `#073B32`, a darkened form

@@ -20,7 +20,7 @@
       key: 'mess',
       text: 'How messy do you want to be?',
       options: [
-        { v: 1, label: 'Not at all.' },
+        { v: 1, label: 'Not at all' },
         { v: 2, label: 'Medium' },
         { v: 3, label: 'Messy' }
       ]
@@ -29,9 +29,9 @@
       key: 'spice',
       text: 'How much spice are you in the mood for?',
       options: [
-        { v: 0, label: 'Zero-toddler level.' },
+        { v: 0, label: 'Zero-toddler level' },
         { v: 1, label: 'Medium' },
-        { v: 2, label: 'Hot like the sun.' }
+        { v: 2, label: 'Hot like the sun' }
       ]
     },
     {

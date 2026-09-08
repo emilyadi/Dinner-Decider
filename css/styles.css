@@ -116,15 +116,25 @@ body {
   box-shadow: var(--shadow-btn);
 }
 .btn--restart {
-  background: transparent;
-  color: var(--on-ground);
-  border: 3px solid rgba(7, 59, 50, .45);
+  background: var(--sun);
+  color: var(--sun-ink);
   font-size: clamp(18px, 2.4vmin, 24px);
-  padding: clamp(14px, 1.9vmin, 20px) clamp(32px, 4.4vmin, 48px);
+  padding: clamp(15px, 2vmin, 21px) clamp(34px, 4.6vmin, 50px);
+  border-bottom: 5px solid var(--sun-deep);
+  box-shadow: var(--shadow-btn);
 }
 
 /* ─────────────  start screen  ───────────── */
-.screen--start { align-items: center; justify-content: center; text-align: center; }
+.screen--start {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image:
+    radial-gradient(circle, rgba(255, 209, 102, .30) 0 7px, transparent 7.5px),
+    radial-gradient(circle, rgba(255, 255, 255, .16) 0 4.5px, transparent 5px);
+  background-size: 118px 118px, 118px 118px;
+  background-position: 0 0, 59px 59px;
+}
 .start { max-width: 760px; }
 
 .start__plate {
@@ -176,9 +186,12 @@ body {
   margin-bottom: clamp(8px, 1.2vmin, 14px);
 }
 .quiz__step {
-  font-size: clamp(14px, 1.9vmin, 19px);
+  font-size: clamp(13px, 1.7vmin, 17px);
   font-weight: 800;
-  color: var(--on-ground);
+  color: var(--sun-ink);
+  background: var(--sun);
+  padding: 6px 15px;
+  border-radius: 999px;
   letter-spacing: .8px;
   text-transform: uppercase;
 }
@@ -304,7 +317,7 @@ body {
   box-shadow: var(--shadow-card);
   padding: clamp(40px, 7vmin, 76px) clamp(28px, 4.5vmin, 60px);
   text-align: center;
-  border-top: clamp(10px, 1.4vmin, 16px) solid var(--coral);
+  border-top: clamp(10px, 1.4vmin, 16px) solid var(--sun);
 }
 .result.is-swapping { animation: pop-in .38s cubic-bezier(.22,.9,.3,1) both; }
 @keyframes pop-in {
