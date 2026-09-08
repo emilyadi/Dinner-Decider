@@ -40,7 +40,7 @@ link that searches Google for it, and those two buttons.
 
 ## How the matching works
 
-`js/meals.js` holds 237 dishes, each tagged against all eight questions:
+`js/meals.js` holds 272 dishes, each tagged against all eight questions:
 
 | field | meaning |
 |-------|---------|
@@ -67,6 +67,12 @@ butter spaghetti, sheet-pan chicken tikka, broccoli melts, the squash and
 caramelized onion galette, chicken with forty cloves of garlic, mushroom
 bourguignon and more). Desserts are excluded.
 
+Alongside those it carries the everyday American standards people actually
+recognise — hot dogs, a BLT, a Reuben, a patty melt, hard-shell tacos, a
+burrito bowl, pepperoni pizza, chicken tenders, orange chicken, lo mein,
+fried rice, brisket, crab cakes, red beans and rice, stuffed shells, a
+loaded baked potato and a chef salad among them.
+
 `scoreMeal()` in `js/app.js` scores every dish against your answers. Utensil
 and "heavy on the" carry the most weight; messiness, spice, fanciness,
 appetite and weather score by how far the dish sits from what you asked for,
@@ -87,7 +93,7 @@ stews, pot pies and braises; hot and sunny keeps things light and grilled;
 ```
 index.html              markup for all three screens
 css/styles.css          layout, palette, portrait + landscape rules
-js/meals.js             the 237-dish database
+js/meals.js             the 272-dish database
 js/app.js               quiz flow, scoring, result rendering
 sw.js                   offline cache
 manifest.webmanifest    home-screen app metadata
@@ -99,7 +105,7 @@ icons/                  app icon (SVG + PNGs for iOS)
 `#06D6A0` green is the app's solid background on every screen. `#FF7F50` coral is the single
 action colour (Next, Let's eat, Give me another, the selected answer).
 `#FFD166` sun rings the plate mark, badges the question counter, caps the
-result card and fills the Restart button; `#118AB2` sea names the chosen
+result card and fills the Back and Restart buttons; `#118AB2` sea names the chosen
 dish.
 
 Nothing is written in white or yellow directly on the green — at 1.9:1 and

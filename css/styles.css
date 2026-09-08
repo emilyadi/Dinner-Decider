@@ -100,13 +100,15 @@ body {
 .btn--go:active { background: #F26A38; }
 
 .btn--ghost {
-  background: transparent;
-  color: var(--on-ground);
-  border: 3px solid rgba(7, 59, 50, .45);
+  background: var(--sun);
+  color: var(--sun-ink);
+  border: none;
+  border-bottom: 5px solid var(--sun-deep);
+  box-shadow: var(--shadow-btn);
   font-size: clamp(17px, 2.3vmin, 22px);
   padding: clamp(13px, 1.8vmin, 19px) clamp(26px, 3.6vmin, 40px);
 }
-.btn--ghost:disabled { opacity: .3; cursor: default; }
+.btn--ghost:disabled { opacity: .45; cursor: default; }
 .btn--ghost:disabled:active { transform: none; }
 
 .btn--another {
