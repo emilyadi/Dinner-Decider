@@ -103,7 +103,7 @@ icons/                  app icon (SVG + PNGs for iOS)
 ## Palette
 
 `#06D6A0` green is the app's solid background on every screen. `#FF7F50`
-coral is the action colour (Let's eat, Give me another, the selected
+coral is the action colour (Find my dinner, Give me another, the selected
 answer, the progress bar). `#FFD166` sun rings the plate mark, badges the
 question counter, caps the result card and fills the Back and Restart
 buttons. `#A63A12` deep coral sets the chosen dish.
