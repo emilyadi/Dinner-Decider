@@ -9,8 +9,10 @@
   --mint:  #06D6A0;
   --sea:   #118AB2;
 
-  --coral-deep: #A63A12;   /* defines the Next button's edge against the green */
+  --coral-deep: #A63A12;   /* the coral buttons' bottom edge */
   --coral-ink:  #4A1C08;   /* 5.75:1 on coral */
+  --sun-deep:   #D9A227;   /* the yellow buttons' bottom edge */
+  --sun-ink:    #4A3405;   /* 8.16:1 on the yellow */
   --sea-deep:   #0B5F7D;
   --ground:     #06D6A0;   /* the app's solid background */
   --on-ground:  #073B32;   /* 6.62:1 on the green — everything written on the ground */
