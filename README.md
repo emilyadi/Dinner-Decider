@@ -106,8 +106,7 @@ icons/                  app icon (SVG + PNGs for iOS)
 coral is the action colour (Let's eat, Give me another, the selected
 answer, the progress bar). `#FFD166` sun rings the plate mark, badges the
 question counter, caps the result card and fills the Back and Restart
-buttons. `#A63A12` deep coral sets the chosen dish and the second line of
-the title.
+buttons. `#A63A12` deep coral sets the chosen dish.
 
 The blue that was originally in the palette is gone — it never sat well
 against the green and yellow, and at 3.96:1 on white it was the weakest

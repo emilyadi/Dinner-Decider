@@ -159,18 +159,9 @@ body {
   text-wrap: balance;
   color: var(--on-ground);
   font-weight: 800;
+  margin-bottom: clamp(30px, 4.6vmin, 50px);
 }
-.start__title span { display: block; color: var(--accent); }
-
-.start__tagline {
-  margin: clamp(16px, 2.6vmin, 26px) auto clamp(30px, 4.6vmin, 48px);
-  max-width: 22ch;
-  font-size: clamp(17px, 2.5vmin, 25px);
-  line-height: 1.45;
-  color: rgba(7, 59, 50, .82);
-  font-weight: 600;
-}
-.start__tagline em { color: var(--accent); font-style: italic; }
+.start__title span { display: block; }
 
 /* ─────────────  quiz  ───────────── */
 .screen--quiz { justify-content: space-between; gap: clamp(12px, 2vmin, 24px); }
