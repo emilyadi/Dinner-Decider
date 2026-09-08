@@ -1,5 +1,5 @@
-/* Dinner Decider — offline cache so the home-screen app opens without a connection. */
-const CACHE = 'dinner-decider-v1';
+/* What should I eat for dinner? — offline cache so the home-screen app opens without a connection. */
+const CACHE = 'dinner-decider-v2';
 const ASSETS = [
   './',
   './index.html',

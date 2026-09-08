@@ -1,4 +1,4 @@
-# Dinner Decider 🍴
+# What should I eat for dinner? 🍴
 
 An iPad app that ends the "I don't know, what do *you* want?" conversation.
 Answer eight questions, get one dish that matches every answer — drawn from
@@ -102,12 +102,19 @@ icons/                  app icon (SVG + PNGs for iOS)
 
 ## Palette
 
-`#06D6A0` green is the app's solid background on every screen. `#FF7F50` coral is the single
-action colour (Next, Let's eat, Give me another, the selected answer).
-`#FFD166` sun rings the plate mark, badges the question counter, caps the
-result card and fills the Back and Restart buttons; `#118AB2` sea names the chosen
-dish.
+`#06D6A0` green is the app's solid background on every screen. `#FF7F50`
+coral is the action colour (Let's eat, Give me another, the selected
+answer, the progress bar). `#FFD166` sun rings the plate mark, badges the
+question counter, caps the result card and fills the Back and Restart
+buttons. `#A63A12` deep coral sets the chosen dish and the second line of
+the title.
+
+The blue that was originally in the palette is gone — it never sat well
+against the green and yellow, and at 3.96:1 on white it was the weakest
+text colour in the app. The deep coral that replaced it reads at 6.49:1.
+The neutrals were re-biased at the same time: they were blue-slate, which
+looked like a leftover once the blue itself was removed.
 
 Nothing is written in white or yellow directly on the green — at 1.9:1 and
-1.3:1 those are unreadable. Text on the green uses `#073B32`, a darkened form
-of the ground itself, at 6.6:1.
+1.3:1 those are unreadable. Text on the green uses `#073B32`, a darkened
+form of the ground itself, at 6.6:1.

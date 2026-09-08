@@ -1,5 +1,5 @@
 {
-  "name": "Dinner Decider",
+  "name": "What should I eat for dinner?",
   "short_name": "Dinner",
   "description": "Answer eight questions, get one dinner you can actually commit to.",
   "start_url": "./index.html",
