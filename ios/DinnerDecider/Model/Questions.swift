@@ -52,9 +52,9 @@ enum Quiz {
         Question(key: .fancy,
                  text: "How fancy are you feeling?",
                  options: [
-                    Option(label: "Not at all",                       value: 1),
-                    Option(label: "A little fancy",                   value: 2),
-                    Option(label: "Very fancy\u{2014}pinkies up!",    value: 3)
+                    Option(label: "I like toddler food",                      value: 1),
+                    Option(label: "More than a hot dog, less than caviar",      value: 2),
+                    Option(label: "Very fancy\u{2014}pinkies up!",              value: 3)
                  ]),
 
         Question(key: .heavy,
@@ -76,9 +76,9 @@ enum Quiz {
         Question(key: .weather,
                  text: "What\u{2019}s the weather?",
                  options: [
-                    Option(label: "Cold and rainy",          value: Weather.cold),
-                    Option(label: "Hot and sunny",           value: Weather.hot),
-                    Option(label: "It\u{2019}s a beautiful day", value: Weather.mild)
+                    Option(label: "Cold and rainy",              value: Weather.cold),
+                    Option(label: "It\u{2019}s a beautiful day", value: Weather.mild),
+                    Option(label: "Hot and sunny",               value: Weather.hot)
                  ]),
 
         Question(key: .diet,

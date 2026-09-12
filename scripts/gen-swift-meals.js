@@ -18,7 +18,7 @@ const body = chunks.map((chunk, ci) => {
     `             u: [${m.u.map(x => U[x]).join(', ')}], m: ${m.m}, ` +
     `s: [${m.s.join(', ')}], f: [${m.f.join(', ')}], ` +
     `h: [${m.h.map(x => H[x]).join(', ')}], a: [${m.a.join(', ')}], ` +
-    `w: [${m.w.map(x => W[x]).join(', ')}], d: ${D[m.d]})`
+    `w: [${m.w.map(x => W[x]).join(', ')}], d: ${D[m.d]}${m.k ? ', k: true' : ''})`
   ).join(',\n');
   return `    private static func part${ci + 1}() -> [Meal] {\n        [\n${rows}\n        ]\n    }`;
 }).join('\n\n');

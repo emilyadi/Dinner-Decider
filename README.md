@@ -24,10 +24,10 @@ To try it on a computer, just open the same URL in any browser.
 1. What utensil are you using? — hands / fork / spoon / chopsticks
 2. How messy do you want to be? — neat / medium / messy
 3. How much spice? — zero / medium / Arrakis
-4. How fancy are you feeling? — plastic tablecloths / a regular night in / pinkies up
+4. How fancy are you feeling? — I like toddler food / more than a hot dog, less than caviar / very fancy
 5. Heavy on the — animal / vegetable / carbs
 6. What's your appetite? — light / normal / all the food
-7. What's the weather? — cold and rainy / hot and sunny / couldn't ask for better
+7. What's the weather? — cold and rainy / it's a beautiful day / hot and sunny
 8. Any dietary restrictions? — none / vegetarian / vegan
 
 Choosing an answer moves straight to the next question — there is no Next
@@ -52,6 +52,7 @@ link that searches Google for it, and those two buttons.
 | `a` | appetite sizes, 1–3 |
 | `w` | weather it suits |
 | `d` | `omni`, `veg` or `vegan` |
+| `k` | present when the dish is plain, familiar American home cooking |
 
 Each dish also carries an emoji (`e`), an origin (`o`) and a one-line blurb
 (`b`). The result screen deliberately shows none of them — just the dish name
@@ -83,6 +84,14 @@ are shuffled, so the same answers can surface different dishes.
 removes every dish containing meat or fish; choosing vegan removes anything
 with animal products at all. This is enforced before scoring, so no amount of
 tapping "Give me another" can surface a dish that breaks it.
+
+**"I like toddler food" does more than set the fancy level.** Fancy level 1 on
+its own is a poor proxy for plain food — a crab boil and a crumbed cutlet are
+both level 1 — so 63 dishes carry a separate `k` flag marking them as plain,
+familiar American home cooking, and choosing that answer adds 28 points to
+them. Where such a dish exists for the chosen utensil and diet, it wins 87% of
+the time; where none exists (chopsticks, or some vegan combinations) the
+utensil still governs, which is the right trade.
 
 The weather answer works as the brief intended: cold and rainy leans into
 stews, pot pies and braises; hot and sunny keeps things light and grilled;

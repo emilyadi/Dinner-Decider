@@ -38,8 +38,8 @@
       key: 'fancy',
       text: 'How fancy are you feeling?',
       options: [
-        { v: 1, label: 'Not at all' },
-        { v: 2, label: 'A little fancy' },
+        { v: 1, label: 'I like toddler food' },
+        { v: 2, label: 'More than a hot dog, less than caviar' },
         { v: 3, label: 'Very fancy&mdash;pinkies up!' }
       ]
     },
@@ -66,8 +66,8 @@
       text: 'What&rsquo;s the weather?',
       options: [
         { v: 'cold', label: 'Cold and rainy' },
-        { v: 'hot',  label: 'Hot and sunny' },
-        { v: 'mild', label: 'It&rsquo;s a beautiful day' }
+        { v: 'mild', label: 'It&rsquo;s a beautiful day' },
+        { v: 'hot',  label: 'Hot and sunny' }
       ]
     },
     {
@@ -185,6 +185,11 @@
 
     // an "animal" answer with no dietary restriction prefers actual meat/fish
     if (a.heavy === 'protein' && a.diet === 'none' && meal.d === 'omni') score += 6;
+
+    // "I like toddler food" asks for plain, familiar food, which the fancy
+    // level alone does not capture — a crab boil and a crumbed cutlet are both
+    // level 1. This leans the ranking onto the dishes tagged basic.
+    if (a.fancy === 1 && meal.k) score += 28;
 
     // the ordinal traits score by how far the dish sits from what was asked for
     score += Math.max(0, 22 - 11 * Math.abs(meal.m - a.mess));

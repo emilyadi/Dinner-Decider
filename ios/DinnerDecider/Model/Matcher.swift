@@ -32,6 +32,11 @@ enum Matcher {
         // an "animal" answer with no dietary restriction prefers actual meat or fish
         if a.heavy == .protein, a.diet == .omnivore, meal.diet == .omnivore { score += 6 }
 
+        // "I like toddler food" asks for plain, familiar food, which the fancy
+        // level alone does not capture — a crab boil and a crumbed cutlet are
+        // both level 1. This leans the ranking onto the dishes tagged basic.
+        if a.fancy == 1, meal.isBasic { score += 28 }
+
         // the ordinal traits score by how far the dish sits from what was asked for
         if let mess = a.mess         { score += max(0, 22 - 11 * abs(meal.mess - mess)) }
         if let spice = a.spice       { score += max(0, 20 - 12 * nearest(meal.spice, spice)) }

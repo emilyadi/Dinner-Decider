@@ -101,6 +101,40 @@ final class MatcherTests: XCTestCase {
         XCTAssertGreaterThan(Double(heavyHits) / total, 0.95)
     }
 
+    /// "I like toddler food" should land on plain, familiar cooking wherever
+    /// such a dish exists for the chosen utensil and diet.
+    func testToddlerFoodLeansOnBasicDishes() {
+        var considered = 0
+        var basicWins = 0
+        for answers in allAnswerCombinations() where answers.fancy == 1 {
+            let pool = Matcher.eligible(for: answers.diet)
+            guard let utensil = answers.utensil,
+                  pool.contains(where: { $0.isBasic && $0.utensils.contains(utensil) })
+            else { continue }
+            considered += 1
+            if Matcher.ranked(for: answers).first?.isBasic == true { basicWins += 1 }
+        }
+        XCTAssertGreaterThan(considered, 0)
+        XCTAssertGreaterThan(Double(basicWins) / Double(considered), 0.80,
+                             "the toddler answer should surface a basic dish where one is available")
+    }
+
+    func testBasicDishesCoverEveryDiet() {
+        let basics = MealDatabase.all.filter(\.isBasic)
+        XCTAssertEqual(basics.count, 63)
+        for diet in Diet.allCases {
+            XCTAssertTrue(basics.contains { $0.diet == diet },
+                          "no basic dish for \(diet)")
+        }
+    }
+
+    func testWeatherOptionsRunColdToHot() {
+        let weather = Quiz.questions.first { $0.key == .weather }
+        XCTAssertEqual(weather?.options.map { $0.value as? Weather },
+                       [.cold, .mild, .hot],
+                       "the weather options should read as a spectrum")
+    }
+
     func testSearchURLEscapesTheDishName() {
         let meal = MealDatabase.all.first { $0.name.contains("Ph\u{1EDF}") } ?? MealDatabase.all[0]
         let url = meal.searchURL

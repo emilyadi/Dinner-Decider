@@ -38,6 +38,8 @@ struct Meal: Identifiable, Hashable {
     let appetite: Set<Int>    // sizes it suits, 1 … 3
     let weather: Set<Weather>
     let diet: Diet
+    /// Plain, familiar American home cooking — what "I like toddler food" pulls toward.
+    let isBasic: Bool
 
     var id: String { name }
 
@@ -45,7 +47,7 @@ struct Meal: Identifiable, Hashable {
     /// literals stay trivial for the type checker.
     init(_ name: String, _ emoji: String, _ origin: String, _ blurb: String,
          u: [Utensil], m: Int, s: [Int], f: [Int],
-         h: [Heavy], a: [Int], w: [Weather], d: Diet) {
+         h: [Heavy], a: [Int], w: [Weather], d: Diet, k: Bool = false) {
         self.name = name
         self.emoji = emoji
         self.origin = origin
@@ -58,6 +60,7 @@ struct Meal: Identifiable, Hashable {
         self.appetite = Set(a)
         self.weather = Set(w)
         self.diet = d
+        self.isBasic = k
     }
 
     /// Google search for the dish, opened from the result screen.
