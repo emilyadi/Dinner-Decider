@@ -29,7 +29,7 @@
       key: 'spice',
       text: 'How much spice are you in the mood for?',
       options: [
-        { v: 0, label: 'Zero-toddler level' },
+        { v: 0, label: 'Zero&mdash;I&rsquo;m a baby' },
         { v: 1, label: 'Medium' },
         { v: 2, label: 'Hot like the sun' }
       ]

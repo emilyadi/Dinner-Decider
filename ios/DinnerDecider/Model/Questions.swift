@@ -44,7 +44,7 @@ enum Quiz {
         Question(key: .spice,
                  text: "How much spice are you in the mood for?",
                  options: [
-                    Option(label: "Zero-toddler level", value: 0),
+                    Option(label: "Zero\u{2014}I\u{2019}m a baby", value: 0),
                     Option(label: "Medium",             value: 1),
                     Option(label: "Hot like the sun",   value: 2)
                  ]),
